@@ -2,7 +2,7 @@
 
 import FadeInSection from "@/components/fade-in";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 const containerVariants = {
   hidden: {},
@@ -23,7 +23,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
+      ease: easeOut,
     },
   },
 };
