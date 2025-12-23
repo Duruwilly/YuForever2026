@@ -16,7 +16,7 @@ const siteConfig = {
   name: "Yinka & Uzochukwu | #YuForever2026 💍",
   description:
     "Celebrating love, family, and forever. Join Yinka & Uzochukwu as we say 'I do' on January 10, 2026 in Lagos, Nigeria.",
-  url: "https://yuforever2026.com",
+  url: "https://yuforever2026.online/",
   image:
     "https://res.cloudinary.com/dwfemmam4/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1766486607/Screenshot_2025-12-23_at_11.40.43_mywqyq.png",
   keyWords:
