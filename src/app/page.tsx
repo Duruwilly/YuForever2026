@@ -102,7 +102,7 @@ bg-[radial-gradient(ellipse_at_top,_#E6C77B_0%,_#4E342E_55%,_#3B2622_100%)]"
             viewport={{ once: false, amount: 0.2 }}
             className="columns-2 md:columns-3 gap-4 space-y-4"
           >
-            {["1.JPG", "2.jpg", "3.JPG", "4.JPG", "5.JPG", "6.JPG"].map(
+            {["1.JPG", "2.jpg", "3.JPG", "4.JPEG", "5.JPEG", "6.JPG"].map(
               (img, index) => (
                 <motion.div
                   key={img}
