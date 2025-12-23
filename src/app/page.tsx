@@ -78,7 +78,7 @@ bg-[radial-gradient(ellipse_at_top,_#E6C77B_0%,_#4E342E_55%,_#3B2622_100%)]"
 
           {/* IMAGE */}
           <Image
-            src="/images/our-story.JPEG"
+            src="/images/our-story2.JPEG"
             alt="Our story"
             width={500}
             height={600}
