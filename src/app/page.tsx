@@ -1,65 +1,186 @@
+"use client";
+
+import FadeInSection from "@/components/fade-in";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="flex flex-col gap-32">
+      {/* HERO */}
+      <section
+        className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden
+bg-[radial-gradient(ellipse_at_top,_#E6C77B_0%,_#4E342E_55%,_#3B2622_100%)]"
+      >
+        <h1 className="text-5xl md:text-7xl font-serif text-[#F7E7B4] mb-4">
+          Yinka & Uzochukwu
+        </h1>
+
+        <p className="text-xl text-[#FFFDF8] opacity-90">#YuForever2026 💍</p>
+
+        <p className="mt-3 text-sm uppercase tracking-[0.3em] text-[#E6C77B]">
+          January 10, 2026 • Lagos, Nigeria
+        </p>
+      </section>
+
+      {/* OUR STORY */}
+      <FadeInSection>
+        <section className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          {/* TEXT */}
+          <div>
+            <h2 className="text-3xl font-serif mb-4 text-[#C9A85C] drop-shadow-[0_0_12px_rgba(201,168,92,0.25)]">
+              Our Story
+              <div className="w-20 h-0.5 bg-[#E6C77B] mb-6" />
+            </h2>
+
+            <p className="text-[#D8CFC4] leading-relaxed mb-6">
+              We were in need of a UI/UX designer… little did I know I was
+              reviewing the application of my future wife. What started as
+              simple work conversations slowly became something neither of us
+              expected — love.
+            </p>
+
+            <motion.a
+              href="/images/our-story-card.JPG"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full
+  bg-[#4E342E] text-[#F7E7B4]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Read Our Full Story
+            </motion.a>
+          </div>
+
+          {/* IMAGE */}
+          <Image
+            src="/images/our-story.JPEG"
+            alt="Our story"
+            width={500}
+            height={600}
+            className="rounded-2xl object-cover shadow-lg"
+          />
+        </section>
+      </FadeInSection>
+
+      {/* MEMORIES GRID */}
+      <FadeInSection>
+        <section className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-serif mb-4 text-[#C9A85C] drop-shadow-[0_0_12px_rgba(201,168,92,0.25)] text-center">
+            Our Memories
+            <div className="w-20 h-0.5 bg-[#E6C77B] mb-6 mx-auto" />
+          </h2>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: false, amount: 0.2 }}
+            className="columns-2 md:columns-3 gap-4 space-y-4"
+          >
+            {["1.JPG", "2.jpg", "3.JPG", "4.JPG", "5.JPG", "6.JPG"].map(
+              (img, index) => (
+                <motion.div
+                  key={img}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03 }}
+                  className="overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={`/images/memories${img}`}
+                    alt=""
+                    width={400}
+                    height={500}
+                    className="w-full rounded-xl"
+                  />
+                </motion.div>
+              )
+            )}
+          </motion.div>
+        </section>
+      </FadeInSection>
+
+      {/* INVITATION */}
+      <FadeInSection>
+        <section className="px-6 text-center">
+          <h2 className="text-3xl font-serif mb-4 text-[#C9A85C] drop-shadow-[0_0_12px_rgba(201,168,92,0.25)] text-center">
+            Wedding Invitation
+            <div className="w-20 h-0.5 bg-[#E6C77B] mb-6 mx-auto" />
+          </h2>
+
+          <div className="max-w-md mx-auto p-8 border rounded-2xl bg-white shadow text-[#1e293b]">
+            <p className="uppercase tracking-widest text-sm mb-4 text-[#1e293b]">
+              You're Invited
+            </p>
+            <h3 className="text-2xl font-serif mb-2 text-[#1e293b]">
+              Yinka & Uzochukwu
+            </h3>
+            <p>January 10, 2026</p>
+            <p>Lagos, Nigeria</p>
+          </div>
+
+          <motion.a
+            href="/images/invitation-card.JPG"
+            download
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-3 px-6 py-3 rounded-full
+  bg-rose-600 text-white mt-6"
+          >
+            Download Invitation
+          </motion.a>
+        </section>
+      </FadeInSection>
+
+      {/* GIFTS */}
+      <FadeInSection>
+        <section className="max-w-xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-serif mb-4 text-[#C9A85C] drop-shadow-[0_0_12px_rgba(201,168,92,0.25)] text-center">
+            Love Gifts
+            <div className="w-20 h-0.5 bg-[#E6C77B] mb-6 mx-auto" />
+          </h2>
+          <p className="text-[#D8CFC4] mb-6">
+            Your presence at our wedding is the greatest gift of all. However,
+            if you wish to honor us with a gift, you are encouraged to monetize
+            it.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+          <div className="bg-gray-50 p-6 rounded-xl text-[#1e293b]">
+            <p className="font-medium">Olayinka Rachael Ayodele</p>
+            <p>Access Bank • 1380907833</p>
+          </div>
+        </section>
+      </FadeInSection>
+
+      {/* FOOTER */}
+      <footer className="text-center py-12 text-sm text-[#D8CFC4]">
+        {/* Made with ❤️ for our forever */}
+        #YuForever2026 ❤️
+      </footer>
+    </main>
   );
 }
