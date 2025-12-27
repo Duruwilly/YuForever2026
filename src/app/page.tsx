@@ -29,6 +29,31 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const shareLink = async ({
+    url,
+    text,
+    title,
+  }: {
+    url: string;
+    text: string;
+    title: string;
+  }) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: title || "Check this out!",
+          text: text || "",
+          url,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      navigator.clipboard.writeText(url);
+      alert("Link copied to clipboard!");
+    }
+  };
+
   return (
     <main className="flex flex-col gap-32">
       {/* HERO */}
@@ -64,16 +89,29 @@ bg-[radial-gradient(ellipse_at_top,_#E6C77B_0%,_#4E342E_55%,_#3B2622_100%)]"
               expected — love.
             </p>
 
-            <motion.a
-              href="/images/our-story-card.JPG"
-              download
+            <motion.button
+              // href="/images/our-story-card.JPG"
+              // download
+              onClick={() => {
+                // if (navigator.share) {
+                //   navigator.share({
+                //     title: "Our Story",
+                //     url: "/images/our-story-card.JPG",
+                //   });
+                // }
+                shareLink({
+                  url: "/images/our-story-card.JPG",
+                  title: "Our Story",
+                  text: "Check out our story!",
+                });
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 px-6 py-3 rounded-full
   bg-[#4E342E] text-[#F7E7B4]"
             >
               Read Our Full Story
-            </motion.a>
+            </motion.button>
           </div>
 
           {/* IMAGE */}
